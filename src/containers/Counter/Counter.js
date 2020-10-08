@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import { increment, decrement, add, subtract, storeResult, deleteResult } from '../../store/actions/actions';
+import * as actionCreators from '../../store/actions/index';
 
 class Counter extends Component {
     state = {
@@ -57,12 +57,12 @@ const mapStateToProps = state => { // reach out for properties on the global sto
 // which ACTIONS do i want to dispatch in this container?
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch(increment()),
-        onDecrementCounter: () => dispatch(decrement()),
-        onAdd: () => dispatch(add(5)),
-        onSubtract: () => dispatch(subtract(5)),
-        onStoreResult: (result) => dispatch(storeResult({ id: new Date(), result: result })),
-        onDeleteResult: (id) => dispatch(deleteResult({ id: id }))
+        onIncrementCounter: () => dispatch(actionCreators.increment()),
+        onDecrementCounter: () => dispatch(actionCreators.decrement()),
+        onAdd: () => dispatch(actionCreators.add(5)),
+        onSubtract: () => dispatch(actionCreators.subtract(5)),
+        onStoreResult: (result) => dispatch(actionCreators.storeResult({ id: new Date(), result: result })),
+        onDeleteResult: (id) => dispatch(actionCreators.deleteResult({ id: id }))
     };
 };
 
